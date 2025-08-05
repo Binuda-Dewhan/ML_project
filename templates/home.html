@@ -6,18 +6,28 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #f9f9f9, #e6f0ff);
+            background: url('/static/form-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
             margin: 0;
             padding: 0;
         }
 
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 15px;
+        }
+
         .login {
+            width: 100%;
             max-width: 600px;
-            margin: 50px auto;
             padding: 30px 40px;
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         h1, h2, legend {
@@ -75,80 +85,82 @@
     </style>
 </head>
 <body>
-    <div class="login">
-        <h1>Student Exam Performance Indicator with  Binuda Dewhan</h1>
+    <div class="overlay">
+        <div class="login">
+            <h1>Student Exam Performance Indicator with Binuda Dewhan</h1>
 
-        <form action="{{ url_for('predict_datapoint')}}" method="post">
-            <legend>Student Exam Performance Prediction via github CI/CD </legend>
+            <form action="{{ url_for('predict_datapoint')}}" method="post">
+                <legend>Student Exam Performance Prediction via GitHub CI/CD</legend>
 
-            <div class="mb-3">
-                <label>Gender</label>
-                <select name="gender" required>
-                    <option selected disabled value="">Select your Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label>Gender</label>
+                    <select name="gender" required>
+                        <option selected disabled value="">Select your Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Race or Ethnicity</label>
-                <select name="ethnicity" required>
-                    <option selected disabled value="">Select Ethnicity</option>
-                    <option value="group A">Group A</option>
-                    <option value="group B">Group B</option>
-                    <option value="group C">Group C</option>
-                    <option value="group D">Group D</option>
-                    <option value="group E">Group E</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label>Race or Ethnicity</label>
+                    <select name="ethnicity" required>
+                        <option selected disabled value="">Select Ethnicity</option>
+                        <option value="group A">Group A</option>
+                        <option value="group B">Group B</option>
+                        <option value="group C">Group C</option>
+                        <option value="group D">Group D</option>
+                        <option value="group E">Group E</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Parental Level of Education</label>
-                <select name="parental_level_of_education" required>
-                    <option selected disabled value="">Select Parent Education</option>
-                    <option value="associate's degree">Associate's Degree</option>
-                    <option value="bachelor's degree">Bachelor's Degree</option>
-                    <option value="high school">High School</option>
-                    <option value="master's degree">Master's Degree</option>
-                    <option value="some college">Some College</option>
-                    <option value="some high school">Some High School</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label>Parental Level of Education</label>
+                    <select name="parental_level_of_education" required>
+                        <option selected disabled value="">Select Parent Education</option>
+                        <option value="associate's degree">Associate's Degree</option>
+                        <option value="bachelor's degree">Bachelor's Degree</option>
+                        <option value="high school">High School</option>
+                        <option value="master's degree">Master's Degree</option>
+                        <option value="some college">Some College</option>
+                        <option value="some high school">Some High School</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Lunch Type</label>
-                <select name="lunch" required>
-                    <option selected disabled value="">Select Lunch Type</option>
-                    <option value="free/reduced">Free/Reduced</option>
-                    <option value="standard">Standard</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label>Lunch Type</label>
+                    <select name="lunch" required>
+                        <option selected disabled value="">Select Lunch Type</option>
+                        <option value="free/reduced">Free/Reduced</option>
+                        <option value="standard">Standard</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Test Preparation Course</label>
-                <select name="test_preparation_course" required>
-                    <option selected disabled value="">Select Test Course</option>
-                    <option value="none">None</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label>Test Preparation Course</label>
+                    <select name="test_preparation_course" required>
+                        <option selected disabled value="">Select Test Course</option>
+                        <option value="none">None</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Reading Score out of 100</label>
-                <input type="number" name="reading_score" placeholder="Enter your Reading Score" min="0" max="100" required />
-            </div>
+                <div class="mb-3">
+                    <label>Reading Score out of 100</label>
+                    <input type="number" name="reading_score" placeholder="Enter your Reading Score" min="0" max="100" required />
+                </div>
 
-            <div class="mb-3">
-                <label>Writing Score out of 100</label>
-                <input type="number" name="writing_score" placeholder="Enter your Writing Score" min="0" max="100" required />
-            </div>
+                <div class="mb-3">
+                    <label>Writing Score out of 100</label>
+                    <input type="number" name="writing_score" placeholder="Enter your Writing Score" min="0" max="100" required />
+                </div>
 
-            <div class="mb-3">
-                <input class="btn" type="submit" value="Predict your Maths Score" />
-            </div>
-        </form>
+                <div class="mb-3">
+                    <input class="btn" type="submit" value="Predict your Maths Score" />
+                </div>
+            </form>
 
-        <h2>Prediction: {{results}}</h2>
+            <h2>Prediction: {{results}}</h2>
+        </div>
     </div>
 </body>
 </html>
