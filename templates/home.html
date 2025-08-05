@@ -89,6 +89,12 @@
         <div class="login">
             <h1>Student Exam Performance Indicator with Binuda Dewhan</h1>
 
+            <div class="mb-3">
+                <a href="{{ url_for('index') }}">
+                    <button class="btn" type="button">Go to Home Page</button>
+                </a>
+            </div>
+
             <form action="{{ url_for('predict_datapoint')}}" method="post">
                 <legend>Student Exam Performance Prediction via GitHub CI/CD</legend>
 
@@ -160,6 +166,8 @@
             </form>
 
             <h2>Prediction: {{results}}</h2>
+
+            
         </div>
     </div>
 </body>
