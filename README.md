@@ -50,6 +50,9 @@ install requirement (libraries) - pip install -r requirements.txt
 ## run the application 
 python app.py
 
+open the ipv4 address with port 5000
+ex : http://13.220.222.150:5000
+
 
 ## run the app.py after closing (optional) - with nohup
 
