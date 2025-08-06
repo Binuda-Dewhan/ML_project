@@ -1,32 +1,32 @@
-name: Deploy to EC2
+# name: Deploy to EC2
 
-on:
-  push:
-    branches:
-      - main  # or 'master'
+# on:
+#   push:
+#     branches:
+#       - main  # or 'master'
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
 
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+#     - name: Setup SSH
+#       run: |
+#         mkdir -p ~/.ssh
+#         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+#         chmod 600 ~/.ssh/id_rsa
+#         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-    - name: Deploy via SSH
-      run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-          cd ML_project
-          git pull origin main
+#     - name: Deploy via SSH
+#       run: |
+#         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+#           cd ML_project
+#           git pull origin main
 
-          echo "🚀 Restarting app with PM2..."
-          pm2 stop app || true
-          pm2 start app.py --name app --interpreter python3
-        EOF
+#           echo "🚀 Restarting app with PM2..."
+#           pm2 stop app || true
+#           pm2 start app.py --name app --interpreter python3
+#         EOF
