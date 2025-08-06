@@ -19,6 +19,9 @@ pip install -r requirments.txt
 
 to activate the ec2
 
+go to your .pem file folder
+in that folder directory open CMD or powershell
+
 ### at the initial
 icacls .\flask-key.pem /inheritance:r
 icacls .\flask-key.pem /grant:r "${env:USERNAME}:(R)"
